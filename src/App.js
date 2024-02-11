@@ -6,6 +6,8 @@ export function App() {
     return <RouterProvider router={routers} />;
 }
 
+export default App;
+
 // function NoMatch() {
 //     return (
 //         <div>
@@ -16,5 +18,3 @@ export function App() {
 //         </div>
 //     );
 // }
-
-export default App;
