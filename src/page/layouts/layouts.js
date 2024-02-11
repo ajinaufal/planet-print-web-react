@@ -1,5 +1,6 @@
-import { Helmet } from 'react-helmet';
 import { Outlet } from 'react-router-dom';
+import { Header } from './header';
+import { Helmet } from 'react-helmet-async';
 
 export function Layout() {
     // console.log(routers.state.location.pathname);
@@ -7,7 +8,7 @@ export function Layout() {
         <div>
             <Helmet>
                 {/* Standard metadata tags */}
-                <title>{document.title}</title>
+                {/* <title>{document.title}</title> */}
                 {/* <meta name="description" content={description} /> */}
                 {/* End standard metadata tags */}
                 {/* Facebook tags */}
@@ -22,6 +23,8 @@ export function Layout() {
                 {/* <meta name="twitter:description" content={description} /> */}
                 {/* End Twitter tags */}
             </Helmet>
+            <p className="text-3xl font-bold underline">Hello world!</p>
+            <Header />
             <Outlet />
         </div>
     );
