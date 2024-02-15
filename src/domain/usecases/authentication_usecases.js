@@ -11,4 +11,8 @@ export class AuthenticationUsecase {
 
         if (resp?.status === 200) this.user.update({});
     }
+
+    async register(params) {
+        const resp = await this.authentication.register()
+    }
 }
