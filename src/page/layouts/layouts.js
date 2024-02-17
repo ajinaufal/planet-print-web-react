@@ -23,7 +23,6 @@ export function Layout() {
                 {/* <meta name="twitter:description" content={description} /> */}
                 {/* End Twitter tags */}
             </Helmet>
-            <p className="text-3xl font-bold underline">Hello world!</p>
             <Header />
             <Outlet />
         </div>
