@@ -6,6 +6,8 @@ export function QuilInput({ value, onChange }) {
     return (
         <div>
             <ReactQuill
+                className="h-32"
+                tabIndex={4}
                 theme="snow"
                 value={value}
                 onChange={(value, delta, source) => onChange(value)}

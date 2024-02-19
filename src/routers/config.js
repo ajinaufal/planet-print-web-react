@@ -8,6 +8,7 @@ import { Category } from '../page/category/list';
 import { Order } from '../page/order/list';
 import { ProductCreate } from '../page/product/create';
 import { ProductUpdate } from '../page/product/update';
+import { CategoryUpdate } from '../page/category/create';
 
 export let routers = createBrowserRouter([
     {
@@ -21,6 +22,7 @@ export let routers = createBrowserRouter([
             { path: 'product/create', Component: ProductCreate },
             { path: 'product/update/:id', Component: ProductUpdate },
             { path: 'category', Component: Category },
+            { path: 'category/create', Component: CategoryUpdate },
             { path: 'order', Component: Order },
             // { path: 'product/create', Component: register },
             // { path: 'product/update', Component: register },
