@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { UserInfoEntities } from 'core/domain/entities/response/response_login_entities';
-import localStorageEnum from 'core/helpers/enum/local_storage_enum';
+// import { localStorageEnums } from '../utils/enums/local_storage';
 
 export class ApiService {
     constructor() {
@@ -10,7 +9,7 @@ export class ApiService {
             headers: {
                 'Content-Type': this.contentType,
                 'secret-key': process.env.API_KEY,
-                Authorization: this.getToken(),
+                // Authorization: this.getToken(),
             },
         });
 
@@ -44,12 +43,12 @@ export class ApiService {
         );
     }
 
-    getToken() {
-        const user = new UserInfoEntities(
-            JSON.parse(localStorage.getItem(localStorageEnum.userInfo))
-        );
-        return `Bearer ${user.token}`;
-    }
+    // getToken() {
+    //     const user = new UserInfoEntities(
+    //         JSON.parse(localStorage.getItem(localStorageEnums.userInfo))
+    //     );
+    //     return `Bearer ${user.token}`;
+    // }
 
     updateContentType(contentType) {
         if (contentType) {

@@ -1,5 +1,3 @@
-import { RequestLoginEntities } from '../entities/request/request_login_entities';
-
 export class AuthenticationUsecase {
     constructor(reposiotry) {
         this.authentication = reposiotry.authentication;
@@ -7,12 +5,16 @@ export class AuthenticationUsecase {
     }
 
     async login(params) {
-        const resp = await this.authentication.login(new RequestLoginEntities(params));
+        // const resp = await this.authentication.login(new RequestLoginEntities(params));
 
-        if (resp?.status === 200) this.user.update({});
+        // if (resp?.status === 200) console.log(resp.data);
+
+        console.log('test masuk');
     }
 
     async register(params) {
-        const resp = await this.authentication.register()
+        const resp = await this.authentication.register(params);
+
+        if (resp?.status === 200) console.log(resp.data);
     }
 }

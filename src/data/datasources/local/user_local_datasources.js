@@ -1,8 +1,6 @@
 import { localStorageEnums } from '../../../utils/enums/local_storage';
 
 export class UserLocalDatasources {
-    constructor() {}
-
     get() {
         return localStorage.getItem(localStorageEnums.userLocal);
     }

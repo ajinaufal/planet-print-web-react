@@ -1,6 +1,20 @@
+import React, { useEffect } from 'react';
 import { Button, TextField } from '@mui/material';
 
-export function login() {
+const Login = ({ usecase }) => {
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                await usecase.authentication.login({});
+            } catch (error) {
+                console.log(error);
+            } finally {
+                console.log('finaly');
+            }
+        };
+
+        fetchData();
+    }, []);
     return (
         <div className="flex flex-row items-center justify-center h-screen">
             <div className="hidden sm:flex flex-col sm:basis-5/12 h-screen bg-target-secondary-default justify-center items-center">
@@ -41,4 +55,6 @@ export function login() {
             </div>
         </div>
     );
-}
+};
+
+export default Login;
