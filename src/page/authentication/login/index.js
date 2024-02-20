@@ -1,20 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Button, TextField } from '@mui/material';
 
 const Login = ({ usecase }) => {
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                await usecase.authentication.login({});
-            } catch (error) {
-                console.log(error);
-            } finally {
-                console.log('finaly');
-            }
-        };
-
-        fetchData();
-    }, []);
     return (
         <div className="flex flex-row items-center justify-center h-screen">
             <div className="hidden sm:flex flex-col sm:basis-5/12 h-screen bg-target-secondary-default justify-center items-center">
@@ -24,7 +11,7 @@ const Login = ({ usecase }) => {
                 </p>
             </div>
             <div className="flex sm:basis-7/12 h-auto justify-center items-center">
-                <div className="flex flex-col gap-4 p-8 border rounded-md w-fit">
+                <div className="flex flex-col gap-4 p-8 border rounded-md w-fit bg-background-default">
                     <img
                         src={process.env.PUBLIC_URL + '/logo.png'}
                         alt="logo"
