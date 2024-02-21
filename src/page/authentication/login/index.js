@@ -43,7 +43,7 @@ const Login = ({ usecase }) => {
                         value={presenter?.password?.value}
                     />
                     <LoadingButton
-                        // loading
+                        loading={presenter?.fetchSubmit?.loading}
                         className="w-80 bg-target-primary-default !important"
                         loadingPosition="start"
                         variant="contained"
@@ -53,7 +53,7 @@ const Login = ({ usecase }) => {
                     <div className="flex flex-row justify-between">
                         <p>Don't have an account?</p>
                         <Button
-                            onClick={() => {}}
+                            onClick={presenter?.submit}
                             variant="outlined"
                             className="border-target-destructive-disabled text-target-destructive-disabled"
                         >

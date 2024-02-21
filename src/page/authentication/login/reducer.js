@@ -26,3 +26,14 @@ export function passwordInputReducer(state, action) {
             }
     }
 }
+
+export function fetchSubmitReducer(state, action) {
+    switch (action?.type) {
+        case 'start':
+            return { loading: true };
+        case 'success':
+            return { loading: false, data: action?.data };
+        case 'failed':
+            return { loading: false, error: action?.error };
+    }
+}
