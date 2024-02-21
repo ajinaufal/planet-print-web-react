@@ -1,7 +1,10 @@
 import React from 'react';
 import { Button, TextField } from '@mui/material';
+import { PresenterLogin } from './presenter';
+import { LoadingButton } from '@mui/lab';
 
 const Login = ({ usecase }) => {
+    const presenter = PresenterLogin({ usecase });
     return (
         <div className="flex flex-row items-center justify-center h-screen">
             <div className="hidden sm:flex flex-col sm:basis-5/12 h-screen bg-target-secondary-default justify-center items-center">
@@ -20,14 +23,33 @@ const Login = ({ usecase }) => {
                     <p className="text-lg font-bold tracking-wide text-center hidden sm:block">
                         Login
                     </p>
-                    <TextField required label="Email" className="w-80" />
-                    <TextField required type="password" label="Password" className="w-80" />
-                    <Button
-                        variant="contained"
+                    <TextField
+                        required
+                        label="Email"
+                        className="w-80"
+                        onChange={(e) =>
+                            presenter?.dispatchEmail({ type: 'change', value: e.target.value })
+                        }
+                        value={presenter?.email?.value}
+                    />
+                    <TextField
+                        required
+                        type="password"
+                        label="Password"
+                        className="w-80"
+                        onChange={(e) =>
+                            presenter?.dispatchPassword({ type: 'change', value: e.target.value })
+                        }
+                        value={presenter?.password?.value}
+                    />
+                    <LoadingButton
+                        // loading
                         className="w-80 bg-target-primary-default !important"
+                        loadingPosition="start"
+                        variant="contained"
                     >
-                        Login
-                    </Button>
+                        Log In
+                    </LoadingButton>
                     <div className="flex flex-row justify-between">
                         <p>Don't have an account?</p>
                         <Button
