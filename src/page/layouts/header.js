@@ -1,7 +1,8 @@
 import { Avatar } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 
-export function Header() {
+export function Header({ presenter }) {
+    if (presenter?.hasAccessories) return <div></div>;
     return (
         <nav className="flex flex-row justify-end bg-background-accent p-3">
             <div className="flex flex-row gap-3 items-center">

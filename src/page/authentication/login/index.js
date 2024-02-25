@@ -24,6 +24,7 @@ const Login = ({ usecase }) => {
                         Login
                     </p>
                     <TextField
+                        error={(presenter?.email?.error || '').length > 0}
                         required
                         label="Email"
                         className="w-80"
@@ -31,8 +32,10 @@ const Login = ({ usecase }) => {
                             presenter?.dispatchEmail({ type: 'change', value: e.target.value })
                         }
                         value={presenter?.email?.value}
+                        helperText={presenter?.email?.error}
                     />
                     <TextField
+                        error={(presenter?.password?.error || '').length > 0}
                         required
                         type="password"
                         label="Password"
@@ -41,11 +44,12 @@ const Login = ({ usecase }) => {
                             presenter?.dispatchPassword({ type: 'change', value: e.target.value })
                         }
                         value={presenter?.password?.value}
+                        helperText={presenter?.password?.error}
                     />
                     <LoadingButton
+                        onClick={presenter?.submit}
                         loading={presenter?.fetchSubmit?.loading}
                         className="w-80 bg-target-primary-default !important"
-                        loadingPosition="start"
                         variant="contained"
                     >
                         Log In

@@ -1,13 +1,14 @@
-import { datasourceDependency } from './datasource';
+import { datasourceDependency, datasouserLocalDepedency } from './datasource';
 import { repositoryDependency } from './repository';
 import { serviceDependency } from './service';
 import { usecaseDependency } from './usecase';
 
 export function InjectionDepedency() {
-    const service = serviceDependency();
+    const datasourceLocal = datasouserLocalDepedency();
+    const service = serviceDependency(datasourceLocal);
     const datasource = datasourceDependency(service);
-    const repository = repositoryDependency(datasource);
+    const repository = repositoryDependency({ ...datasource, ...datasourceLocal });
     const usecase = usecaseDependency(repository);
 
-    return { service, datasource, repository, usecase };
+    return { service, datasource: { ...datasource, ...datasourceLocal }, repository, usecase };
 }

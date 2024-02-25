@@ -8,7 +8,7 @@ class ResponseLoginPhotoEntities {
     }
 }
 
-class ResponseLoginDataEntities {
+export class ResponseLoginDataEntities {
     constructor(data) {
         this.name = data?.name;
         this.photo = new ResponseLoginPhotoEntities(data?.photo);

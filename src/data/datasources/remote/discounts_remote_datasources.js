@@ -1,4 +1,4 @@
-export class ProductRemoteDatasources {
+export class DiscountRemoteDatasources {
     constructor(service) {
         this.apiService = service.apiService;
     }

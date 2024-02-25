@@ -1,25 +1,27 @@
 import axios from 'axios';
-// import { localStorageEnums } from '../utils/enums/local_storage';
 
 export class ApiService {
-    constructor() {
+    constructor({ token }) {
         this.axiosInstance = axios.create({
             baseURL: 'http://127.0.0.1:4000/api',
             timeout: 60000,
             headers: {
                 'Content-Type': this.contentType,
-                'secret-key': process.env.API_KEY,
-                // Authorization: this.getToken(),
+                'secret-key':
+                    '0929f289ae7c3c6ef8983eb6562a7e636a2166a0ba6325a848a6723b2f68bcfb684312e52c1ecbd70b5510fc888b81d9c5a50af2bb71af41ed82d191272ae6a7',
+                Authorization: token,
             },
         });
 
         this.axiosInstance.interceptors.response.use(
             (response) => {
-                if (response.status === 401) console.log('can tag');
                 return response;
             },
             (error) => {
-                if (error?.response) return error.response;
+                if (error?.response) {
+                    if (error.response.status === 401) this.redirectToLogin();
+                    return error.response;
+                }
                 return {
                     status: 500,
                     message: error?.message,
@@ -43,12 +45,9 @@ export class ApiService {
         );
     }
 
-    // getToken() {
-    //     const user = new UserInfoEntities(
-    //         JSON.parse(localStorage.getItem(localStorageEnums.userInfo))
-    //     );
-    //     return `Bearer ${user.token}`;
-    // }
+    redirectToLogin() {
+        window.location.href = '/login';
+    }
 
     updateContentType(contentType) {
         if (contentType) {

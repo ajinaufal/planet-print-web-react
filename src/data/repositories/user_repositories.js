@@ -3,15 +3,15 @@ export class UserRepository {
         this.local = datasources.userLocal;
     }
 
-    async getUserLocal() {
-        return await this.local.get();
+    getUserLocal() {
+        return this.local.get();
     }
 
-    async updateUserLocal(params) {
-        return await this.local.update(params);
+    updateUserLocal(params) {
+        return this.local.update(params);
     }
 
-    async deleteUserLocal() {
-        return await this.local.delete();
+    deleteUserLocal() {
+        return this.local.delete();
     }
 }

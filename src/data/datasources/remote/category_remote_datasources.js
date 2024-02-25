@@ -4,18 +4,18 @@ export class CategoryRemoteDatasources {
     }
 
     async get() {
-        return await this.apiService.get('/category/');
+        return await this.apiService.get('/v1/category/');
     }
 
     async create(params) {
-        return await this.apiService.post('/category/create', params);
+        return await this.apiService.post('/v1/category/create', params);
     }
 
     async delete(params) {
-        return await this.apiService.post('/category/delete', params);
+        return await this.apiService.post('/v1/category/delete', params);
     }
 
     async update(params) {
-        return await this.apiService.post('/category/update', params);
+        return await this.apiService.post('/v1/category/update', params);
     }
 }

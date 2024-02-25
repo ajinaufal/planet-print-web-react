@@ -8,9 +8,11 @@ export function App() {
     const depedency = InjectionDepedency();
 
     return (
-        <HelmetProvider>
-            <RouterProvider router={routers({ usecase: depedency.usecase })} />
-        </HelmetProvider>
+        <React.Fragment>
+            <HelmetProvider>
+                <RouterProvider router={routers({ usecase: depedency.usecase })} />
+            </HelmetProvider>
+        </React.Fragment>
     );
 }
 

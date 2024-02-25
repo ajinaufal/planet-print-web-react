@@ -1,9 +1,13 @@
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from './header';
 import { Helmet } from 'react-helmet-async';
+import { PresenterLayout } from './presenter';
+import { Sidebar } from './sidebar';
 
-export function Layout() {
-    // console.log(routers.state.location.pathname);
+function Layout({ usecase }) {
+    const presenter = PresenterLayout({ usecase });
+
     return (
         <div>
             <Helmet>
@@ -23,8 +27,11 @@ export function Layout() {
                 {/* <meta name="twitter:description" content={description} /> */}
                 {/* End Twitter tags */}
             </Helmet>
-            <Header />
+            <Header presenter={presenter} />
+            <Sidebar presenter={presenter} />
             <Outlet />
         </div>
     );
 }
+
+export default Layout;

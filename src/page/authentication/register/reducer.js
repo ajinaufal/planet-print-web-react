@@ -1,3 +1,12 @@
+export function nameInputReducer(state, action) {
+    switch (action?.type) {
+        case 'change':
+            return { value: action?.value };
+        default:
+            return { ...state };
+    }
+}
+
 export function emailInputReducer(state, action) {
     switch (action?.type) {
         case 'change':
@@ -13,7 +22,20 @@ export function emailInputReducer(state, action) {
             }
             return { value: state?.value };
         default:
-            break;
+            return { ...state };
+    }
+}
+
+export function phoneInputReducer(state, action) {
+    switch (action?.type) {
+        case 'change':
+            const emailRegex = /(?<!\.)\d+(?!\.)/g;
+            if (!emailRegex.test(action?.value)) {
+                return { value: action?.value, error: 'Invalid email address' };
+            }
+            return { value: action?.value };
+        default:
+            return { ...state };
     }
 }
 
@@ -30,14 +52,14 @@ export function passwordInputReducer(state, action) {
             }
             return { value: state?.value };
         default:
-            break;
+            return { ...state };
     }
 }
 
-export function fetchSubmitReducer(state, action) {
+export function fetchRegisterReducer(state, action) {
     switch (action?.type) {
         case 'start':
-            return { loading: true };
+            return { loading: true, data: [] };
         case 'success':
             return { loading: false, data: action?.data };
         case 'failed':
