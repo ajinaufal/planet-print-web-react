@@ -1,10 +1,11 @@
-export class CategoryRepositories {
-    constructor(datasources) {
-        this.category = datasources.category;
+export class CategoryUsecase {
+    constructor(reposiotry) {
+        this.category = reposiotry.category;
     }
 
     async get() {
-        return this.category.get();
+        const resp = await this.category.get();
+        return { data: new ResponseProductListEntities(resp?.data), status: resp?.status };
     }
 
     async create(params) {

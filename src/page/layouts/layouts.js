@@ -9,7 +9,7 @@ function Layout({ usecase }) {
     const presenter = PresenterLayout({ usecase });
 
     return (
-        <div>
+        <div className="realtive">
             <Helmet>
                 {/* Standard metadata tags */}
                 {/* <title>{document.title}</title> */}
@@ -29,7 +29,9 @@ function Layout({ usecase }) {
             </Helmet>
             <Header presenter={presenter} />
             <Sidebar presenter={presenter} />
-            <Outlet />
+            <div className="mt-20 ml-52 mr-4">
+                <Outlet />
+            </div>
         </div>
     );
 }
