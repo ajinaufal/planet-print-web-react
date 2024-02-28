@@ -5,7 +5,7 @@ export class CategoryUsecase {
 
     async get() {
         const resp = await this.category.get();
-        return { data: new ResponseProductListEntities(resp?.data), status: resp?.status };
+        return { data: resp?.data, status: resp?.status };
     }
 
     async create(params) {

@@ -5,6 +5,7 @@ import Login from '../page/authentication/login/index';
 import Register from '../page/authentication/register/index';
 import Dashboard from '../page/dashboard';
 import Product from '../page/product/list';
+import Category from '../page/category/list';
 
 export function routers({ usecase }) {
     return createBrowserRouter([
@@ -18,8 +19,8 @@ export function routers({ usecase }) {
                 { path: 'product', element: <Product usecase={usecase} /> },
                 // { path: 'product/create', loader: usecase, Component: ProductCreate },
                 // { path: 'product/update/:id', loader: usecase, Component: ProductUpdate },
-                // { path: 'category', loader: usecase, Component: Category },
-                // { path: 'category/create', loader: usecase, Component: CategoryCreate },
+                { path: 'category', element: <Category usecase={usecase} /> },
+                { path: 'category/create',},
                 // { path: 'category/update/:id', loader: usecase, Component: CategoryUpdate },
                 // { path: 'order', loader: usecase, Component: Order },
                 // { path: 'user/create', Component: register },

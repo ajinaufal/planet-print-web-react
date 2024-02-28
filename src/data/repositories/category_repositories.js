@@ -1,4 +1,4 @@
-export class CategoryRepositories {
+export class CategoryRepository {
     constructor(datasources) {
         this.category = datasources.category;
     }

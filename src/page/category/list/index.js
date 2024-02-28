@@ -1,6 +1,8 @@
 import { Button } from '@mui/material';
+import { PresenterCategory } from './presenter';
 
-export function Category() {
+function Category({ usecase }) {
+    const presenter = PresenterCategory({ usecase });
     return (
         <div className="flex flex-col">
             <Button className="self-end flex flex-row gap-2 leading-8" variant="contained">
@@ -43,3 +45,5 @@ export function Category() {
         </div>
     );
 }
+
+export default Category;
