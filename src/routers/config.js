@@ -6,6 +6,7 @@ import Register from '../page/authentication/register/index';
 import Dashboard from '../page/dashboard';
 import Product from '../page/product/list';
 import Category from '../page/category/list';
+import ProductCreate from '../page/product/create';
 
 export function routers({ usecase }) {
     return createBrowserRouter([
@@ -13,14 +14,14 @@ export function routers({ usecase }) {
             path: '/',
             element: <Layout usecase={usecase} />,
             children: [
+                { index: true, element: <Dashboard usecase={usecase} /> },
                 { path: 'login', element: <Login usecase={usecase} /> },
                 { path: 'register', element: <Register usecase={usecase} /> },
-                { index: true, element: <Dashboard usecase={usecase} /> },
                 { path: 'product', element: <Product usecase={usecase} /> },
+                { path: 'category', element: <Category usecase={usecase} /> },
+                { path: 'product/create', element: <ProductCreate usecase={usecase} /> },
                 // { path: 'product/create', loader: usecase, Component: ProductCreate },
                 // { path: 'product/update/:id', loader: usecase, Component: ProductUpdate },
-                { path: 'category', element: <Category usecase={usecase} /> },
-                { path: 'category/create',},
                 // { path: 'category/update/:id', loader: usecase, Component: CategoryUpdate },
                 // { path: 'order', loader: usecase, Component: Order },
                 // { path: 'user/create', Component: register },

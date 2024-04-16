@@ -1,7 +1,8 @@
 import { Button, MenuItem, Select, TextField } from '@mui/material';
 import { QuilInput } from '../../commons/components';
+import { memo } from 'react';
 
-export function ProductCreate() {
+function ProductCreate() {
     return (
         <div className="flex flex-col">
             <div className="flex flex-row gap-4">
@@ -26,7 +27,11 @@ export function ProductCreate() {
                             <div className="flex flex-col justify-center items-center border-2 rounded border-dashed p-3 border-slate-500">
                                 <p>Drag and drop your image here</p>
                                 <p>or</p>
-                                <Button variant="outlined" className="flex flex-row gap-2 w-40">
+                                <Button
+                                    variant="outlined"
+                                    className="flex flex-row gap-2 w-40"
+                                    size="small"
+                                >
                                     <i class="fa-solid fa-cloud-arrow-up" />
                                     <p>Upload File</p>
                                 </Button>
@@ -53,8 +58,12 @@ export function ProductCreate() {
                                 <TextField required className="w-full" size="small" />
                             </div>
                         </div>
-                        <Button variant="contained" className="flex flex-row gap-2 w-56">
-                            <p>Add Antoher Variant</p>
+                        <Button
+                            variant="contained"
+                            className="flex flex-row gap-2 w-fit"
+                            size="small"
+                        >
+                            Add Antoher Variant
                         </Button>
                     </div>
                 </div>
@@ -72,11 +81,11 @@ export function ProductCreate() {
                     <div className="bg-background-default p-3 w-fit rounded flex flex-col gap-3 h-fit w-full">
                         <div className="flex flex-col">
                             <label>Category</label>
-                            <TextField type="number" className="w-full" size="small" />
+                            <TextField className="w-full" size="small" />
                         </div>
                         <div className="flex flex-col">
                             <label>Status</label>
-                            <TextField type="number" className="w-full" size="small" />
+                            <TextField className="w-full" size="small" />
                         </div>
                     </div>
                 </div>
@@ -84,3 +93,5 @@ export function ProductCreate() {
         </div>
     );
 }
+
+export default memo(ProductCreate);

@@ -28,7 +28,6 @@ export class ApiService {
                     config: error?.config,
                     data: {
                         status: 'failure',
-                        data: {},
                         error_message:
                             'Check your internet connection, ensure you are connected to the internet and try refreshing the page',
                     },
@@ -46,7 +45,7 @@ export class ApiService {
     }
 
     redirectToLogin() {
-        window.location.href = '/login';
+        // window.location.href = '/login';
     }
 
     updateContentType(contentType) {

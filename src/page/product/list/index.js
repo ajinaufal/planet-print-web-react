@@ -7,7 +7,11 @@ function Product({ usecase }) {
         <div className="flex flex-col">
             <div className="flex flex-row justify-between items-center">
                 <TextField label="Search" className="w-48" size="small" />
-                <Button className="self-end flex flex-row gap-2 leading-8" variant="contained">
+                <Button
+                    className="self-end flex flex-row gap-2 leading-8"
+                    variant="contained"
+                    size="small"
+                >
                     <i className="fa-solid fa-plus -mt-0.5"></i>
                     Create Product
                 </Button>

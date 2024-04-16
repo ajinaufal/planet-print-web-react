@@ -9,9 +9,13 @@ export function Sidebar({ presenter }) {
     ];
     if (presenter?.hasAccessories) return <div></div>;
     return (
-        <aside className="absolute top-0 bottom-0 left-0 w-48 bg-background-accent mt-16 pt-4 px-2 flex flex-col">
-            {(Menus || []).map((menu) => (
-                <Link className="px-2 py-3 hover:bg-target-secondary-hover rounded" to={menu?.path}>
+        <aside className="absolute top-0 bottom-0 left-0 w-48 bg-white mt-16 pt-4 px-2 flex flex-col">
+            {(Menus || []).map((menu, i) => (
+                <Link
+                    key={i}
+                    className="px-2 py-3 hover:bg-target-secondary-hover rounded"
+                    to={menu?.path}
+                >
                     {menu?.label}
                 </Link>
             ))}

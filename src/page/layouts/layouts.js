@@ -29,7 +29,7 @@ function Layout({ usecase }) {
             </Helmet>
             <Header presenter={presenter} />
             <Sidebar presenter={presenter} />
-            <div className="mt-20 ml-52 mr-4">
+            <div className={presenter?.hasAccessories ? '' : 'mt-20 ml-52 mr-4'}>
                 <Outlet />
             </div>
         </div>

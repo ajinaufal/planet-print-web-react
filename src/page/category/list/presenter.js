@@ -6,8 +6,7 @@ export function PresenterCategory({ usecase }) {
 
     useEffect(() => {
         initPage(data);
-        // eslint-disable-next-line
-    }, []);
+    }, [data]);
 
     return { ...data, ...funct };
 }
@@ -28,5 +27,5 @@ async function fetchCategory({ usecase }) {
     console.log('masuk fetch');
     const resp = await usecase?.category?.get();
 
-    console.log(usecase);
+    console.log(resp);
 }

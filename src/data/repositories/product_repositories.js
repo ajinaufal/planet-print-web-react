@@ -4,18 +4,18 @@ export class ProductRepository {
     }
 
     async get() {
-        return this.product.get();
+        return await this.product.get();
     }
 
     async create(params) {
-        return this.product.create(params);
+        return await this.product.create(params);
     }
 
     async delete(params) {
-        return this.product.delete(params);
+        return await this.product.delete(params);
     }
 
     async update(params) {
-        return this.product.update(params);
+        return await this.product.update(params);
     }
 }
