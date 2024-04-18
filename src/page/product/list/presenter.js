@@ -6,8 +6,7 @@ export function PresenterProductList({ usecase }) {
     const funct = UseFunct({ ...data });
 
     useEffect(() => {
-        initPage(data);
-        // eslint-disable-next-line
+        // initPage(data);
     }, []);
 
     return { ...data, ...funct };

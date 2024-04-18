@@ -6,13 +6,13 @@ export function PresenterCategory({ usecase }) {
 
     useEffect(() => {
         initPage(data);
-    }, [data]);
+    }, []);
 
     return { ...data, ...funct };
 }
 
 async function initPage(data) {
-    await fetchCategory(data);
+    // await fetchCategory(data);
 }
 
 function useData({ usecase }) {

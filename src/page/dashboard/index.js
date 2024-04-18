@@ -1,9 +1,12 @@
+import { memo } from 'react';
+import { Card } from './components';
+
 function Dashboard() {
     return (
-        <div>
-            <h2>Dashboard</h2>
+        <div className="flex">
+            <Card />
         </div>
     );
 }
 
-export default Dashboard;
+export default memo(Dashboard);

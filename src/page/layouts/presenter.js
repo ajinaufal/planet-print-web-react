@@ -8,7 +8,7 @@ export function PresenterLayout({ usecase }) {
 
     useEffect(() => {
         initialRender(data);
-    }, [data]);
+    }, []);
 
     return { ...data, ...funct };
 }

@@ -1,5 +1,7 @@
 import { Button, TextField } from '@mui/material';
 import { PresenterProductList } from './presenter';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { memo } from 'react';
 
 function Product({ usecase }) {
     const presenter = PresenterProductList({ usecase });
@@ -8,7 +10,7 @@ function Product({ usecase }) {
             <div className="flex flex-row justify-between items-center">
                 <TextField label="Search" className="w-48" size="small" />
                 <Button
-                    className="self-end flex flex-row gap-2 leading-8"
+                    className="self-end flex flex-row gap-2 leading-8 bg-targer-primary-default"
                     variant="contained"
                     size="small"
                 >
@@ -37,7 +39,7 @@ function Product({ usecase }) {
                             </td>
                             <td className="border-y border-black relative">
                                 {(product?.photo || []).map((photo, i) => (
-                                    <img
+                                    <LazyLoadImage
                                         key={photo?.token}
                                         alt={i}
                                         className={`w-8 rounded-full shadow border absolute top-2.5 ${
@@ -75,4 +77,4 @@ function Product({ usecase }) {
     );
 }
 
-export default Product;
+export default memo(Product);
