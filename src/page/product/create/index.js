@@ -32,7 +32,7 @@ function ProductCreate() {
                                     className="flex flex-row gap-2 w-40"
                                     size="small"
                                 >
-                                    <i class="fa-solid fa-cloud-arrow-up" />
+                                    <i className="fa-solid fa-cloud-arrow-up" />
                                     <p>Upload File</p>
                                 </Button>
                             </div>
@@ -44,17 +44,18 @@ function ProductCreate() {
                             <div className="flex flex-col w-full">
                                 <label>Options</label>
                                 <Select onChange={(e) => {}} size="small">
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
+                                    <MenuItem value={10}>Colors</MenuItem>
+                                    <MenuItem value={20}>Shape</MenuItem>
+                                    <MenuItem value={30}>Size</MenuItem>
+                                    <MenuItem value={30}>Weight</MenuItem>
                                 </Select>
                             </div>
                             <div className="flex flex-col w-full">
-                                <label>UOM</label>
+                                <label>Variant</label>
                                 <TextField required className="w-full" size="small" />
                             </div>
                             <div className="flex flex-col w-full">
-                                <label>Price</label>
+                                <label>Price Adjustments</label>
                                 <TextField required className="w-full" size="small" />
                             </div>
                         </div>
@@ -70,21 +71,27 @@ function ProductCreate() {
                 <div className="flex flex-col gap-4 basis-5/12 ">
                     <div className="bg-background-default p-3 w-fit rounded flex flex-col gap-3 h-fit w-full">
                         <div className="flex flex-col">
-                            <label>Base Price</label>
-                            <TextField type="number" className="w-full" size="small" />
+                            <label>SKU</label>
+                            <TextField className="w-full" size="small" />
                         </div>
                         <div className="flex flex-col">
-                            <label>Discount</label>
-                            <TextField type="number" className="w-full" size="small" />
+                            <label>Stock</label>
+                            <TextField className="w-full" size="small" />
                         </div>
-                    </div>
-                    <div className="bg-background-default p-3 w-fit rounded flex flex-col gap-3 h-fit w-full">
                         <div className="flex flex-col">
                             <label>Category</label>
                             <TextField className="w-full" size="small" />
                         </div>
                         <div className="flex flex-col">
                             <label>Status</label>
+                            <TextField className="w-full" size="small" />
+                        </div>
+                        <div className="flex flex-col">
+                            <label>UOM</label>
+                            <TextField className="w-full" size="small" />
+                        </div>
+                        <div className="flex flex-col">
+                            <label>Base Price</label>
                             <TextField className="w-full" size="small" />
                         </div>
                     </div>

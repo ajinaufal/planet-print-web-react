@@ -6,7 +6,7 @@ function Category({ usecase }) {
     return (
         <div className="flex flex-col">
             <Button className="self-end flex flex-row gap-2 leading-8" variant="contained">
-                <i class="fa-solid fa-plus -mt-0.5"></i>
+                <i className="fa-solid fa-plus -mt-0.5"></i>
                 Create Category
             </Button>
             <table className="table-auto w-full border-separate border-spacing-y-4">

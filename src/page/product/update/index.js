@@ -27,7 +27,7 @@ export function ProductUpdate() {
                                 <p>Drag and drop your image here</p>
                                 <p>or</p>
                                 <Button variant="outlined" className="flex flex-row gap-2 w-40">
-                                    <i class="fa-solid fa-cloud-arrow-up" />
+                                    <i className="fa-solid fa-cloud-arrow-up" />
                                     <p>Upload File</p>
                                 </Button>
                             </div>

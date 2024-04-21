@@ -14,8 +14,8 @@ export function PresenterLayout({ usecase }) {
 }
 
 function initialRender({ usecase, navigate, hasAccessories }) {
-    const local = usecase?.user?.getUserLocal();
-    if (!local?.token && !hasAccessories) navigate('/login');
+    // const local = usecase?.user?.getUserLocal();
+    // if (!local?.token && !hasAccessories) navigate('/login');
 }
 
 function UseData({ usecase }) {

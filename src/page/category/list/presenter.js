@@ -6,7 +6,7 @@ export function PresenterCategory({ usecase }) {
 
     useEffect(() => {
         initPage(data);
-    }, []);
+    }, [data]);
 
     return { ...data, ...funct };
 }
