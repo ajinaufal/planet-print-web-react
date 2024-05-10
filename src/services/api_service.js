@@ -1,14 +1,12 @@
 import axios from 'axios';
 export class ApiService {
-  constructor({ url, datasourceLocal, apiKey }) {
-    this.datasourceLocal = datasourceLocal;
+  constructor({ domain }) {
     this.axiosInstance = axios.create({
-      baseURL: url,
+      baseURL: domain,
       timeout: 60000,
       headers: {
         'Content-Type': this.contentType,
         Authorization: this.token(),
-        'api-key': apiKey,
       },
     });
 
@@ -17,22 +15,7 @@ export class ApiService {
         return response;
       },
       (error) => {
-        if (error?.response) {
-          if (error.response.status === 401 && window.location.pathname === '/login')
-            return error.response;
-          if (error.response.status === 401) this.redirectToLogin();
-          return error.response;
-        }
-        return {
-          status: 500,
-          message: error?.message,
-          config: error?.config,
-          data: {
-            status: 'failure',
-            error_message:
-              'Check your internet connection, ensure you are connected to the internet and try refreshing the page',
-          },
-        };
+        return error.response;
       }
     );
 
@@ -43,27 +26,6 @@ export class ApiService {
         return Promise.reject(error);
       }
     );
-  }
-
-  token() {
-    const user = this.datasourceLocal.userLocal.get();
-    if (user) return `bearer ${user?.token}`;
-    return '';
-  }
-
-  redirectToLogin() {
-    this.datasourceLocal?.branchLocal?.delete();
-    this.datasourceLocal?.customerLocal?.delete();
-    this.datasourceLocal?.userLocal?.delete();
-    window.location.href = '/login';
-  }
-
-  updateContentType(contentType) {
-    if (contentType) {
-      const headers = this.axiosInstance.defaults.headers;
-      headers['Content-Type'] = contentType;
-      this.axiosInstance.defaults.headers = headers;
-    }
   }
 
   async get(url, data = {}) {
@@ -84,6 +46,25 @@ export class ApiService {
   async delete(url) {
     const response = await this.axiosInstance.delete(url);
     return response;
+  }
+
+  async upload(file, onUploadProgress) {
+    const headers = this.axiosInstance.defaults.headers;
+    headers['Content-Type'] = contentType;
+    this.axiosInstance.defaults.headers = headers;
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const response = await this.axiosInstance.post(url, data, { onUploadProgress });
+
+    // (progressEvent) => {
+    //   const uploadPercentage = Math.round(
+    //     (progressEvent.loaded / progressEvent.total) * 100
+    //   );
+    //   setProgress(uploadPercentage);
+    // }
+    return { response };
   }
 }
 
