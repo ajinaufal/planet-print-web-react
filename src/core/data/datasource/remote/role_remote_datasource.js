@@ -1,6 +1,6 @@
 export class RoleRemoteDatasources {
-  constructor({ api }) {
-    this.api = api;
+  constructor({ service }) {
+    this.api = service?.api;
   }
 
   async create(params) {

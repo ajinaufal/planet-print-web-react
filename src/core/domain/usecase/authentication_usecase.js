@@ -4,10 +4,16 @@ export class AuthenticationUsecase {
   }
 
   async login(params) {
-    const resp = await this.repository.auth.login(params);
+    try {
+      const resp = await this.repository.auth.login(params);
+      return resp;
+    } catch (error) {
+      
+    }
   }
 
   async register(params) {
     const resp = await this.repository.auth.register(params);
+    return resp;
   }
 }

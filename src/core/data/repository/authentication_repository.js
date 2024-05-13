@@ -1,3 +1,5 @@
+import { LoginResponseEntities } from '../../domain/entities/response/login_response_entities';
+import { RegisterResponseEntities } from '../../domain/entities/response/register_response_entities';
 import { EitherService } from '../../services/either_service';
 import { RepositoryFailure, ServerFailure } from '../../services/exception_service';
 
@@ -8,8 +10,8 @@ export class AuthenticationRepository {
 
   async login(params) {
     try {
-      const repo = await this.datasource.auth.login(params);
-      return EitherService.right(repo);
+      const resp = await this.datasource.auth.login(params);
+      return EitherService.right(new LoginResponseEntities(resp?.data));
     } catch (error) {
       if (error instanceof ServerFailure) {
         return EitherService.left(error);
@@ -21,8 +23,8 @@ export class AuthenticationRepository {
 
   async register(params) {
     try {
-      const repo = await this.datasource.auth.register(params);
-      return EitherService.right(repo);
+      const resp = await this.datasource.auth.register(params);
+      return EitherService.right(new RegisterResponseEntities(resp?.data));
     } catch (error) {
       if (error instanceof ServerFailure) {
         return EitherService.left(error);
