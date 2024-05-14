@@ -30,3 +30,5 @@ export function adornmentPasswordReducer(state, action) {
       return { data: false, type: 'text' };
   }
 }
+
+export function errorServer(state, action) {}

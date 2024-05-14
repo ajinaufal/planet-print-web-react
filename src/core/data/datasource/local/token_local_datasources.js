@@ -1,21 +1,38 @@
+import { LocalFailure } from '../../../services/exception_service';
 import localStorageEnum from '../../../utils/enums/local_storage';
 
 export class TokenLocalDatasource {
   constructor() {}
 
   get() {
-    const jsonLocal = JSON.parse(localStorage.getItem(localStorageEnum.token) || '{}');
-    if ((jsonLocal?.token || '').length != 0) return jsonLocal.token;
-    return '';
+    try {
+      const token = localStorage.getItem(localStorageEnum.token) || '';
+      if (token?.length != 0) return token;
+      return '';
+    } catch (error) {
+      console.error(`Error local source: ${error.message}`);
+      throw new LocalFailure(error?.message);
+    }
   }
 
   update(token) {
-    const params = {};
-    if ((token || '').length > 0) params.token = token || '';
-    return localStorage.setItem(localStorageEnum.userInfo, JSON.stringify(params));
+    try {
+      if ((token || '').length > 0) {
+        localStorage.setItem(localStorageEnum.token, JSON.stringify(token));
+      }
+      return token;
+    } catch (error) {
+      console.error(`Error local source: ${error.message}`);
+      throw new LocalFailure(error?.message);
+    }
   }
 
   delete() {
-    return localStorage.removeItem(localStorageEnum.token);
+    try {
+      return localStorage.removeItem(localStorageEnum.token);
+    } catch (error) {
+      console.error(`Error local source: ${error.message}`);
+      throw new LocalFailure(error?.message);
+    }
   }
 }

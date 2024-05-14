@@ -16,8 +16,21 @@ export class ServerFailure extends Error {
   }
 }
 
+export class LocalFailure extends Error {
+  constructor(message = 'Local failure') {
+    super(message);
+  }
+}
+
 export class RepositoryFailure extends Error {
   constructor(message = 'Repository failure') {
+    super(message);
+    this.name = 'RepositoryFailure';
+  }
+}
+
+export class UsecaseFailure extends Error {
+  constructor(message = 'Usecase failure') {
     super(message);
     this.name = 'RepositoryFailure';
   }

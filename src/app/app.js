@@ -6,7 +6,7 @@ import { CommonInjector } from '../core/injector/injector';
 function App() {
   const injector = CommonInjector();
 
-  // injector.usecase.auth.login
+  // injector.local.token.update
 
   return <RouterProvider router={Router({ usecase: injector.usecase })} />;
 }

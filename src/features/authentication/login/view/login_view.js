@@ -1,10 +1,11 @@
 import React, { memo } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { ButtonContained } from '../../../../components/buttons';
+import { ButtonContained } from '../../../../core/components/buttons/buttons';
 import { Link } from 'react-router-dom';
 import { loginPresenter } from '../presenter/login_presenter';
 import { TextInput } from '../../../../core/components/inputs/input_text';
 import { HideIconAdomment } from '../../../../core/components/adornment/hide_icon_adornment';
+import { Alert } from '@mui/material';
 
 function LoginView({ usecase }) {
   const presenter = loginPresenter({ usecase });
@@ -19,7 +20,8 @@ function LoginView({ usecase }) {
         />
       </div>
       <div className="flex basis-6/12 w-full h-screen items-center justify-center">
-        <div className="flex flex-col gap-3 max-w-72 w-full">
+        <div className="flex flex-col gap-5 max-w-72 w-full">
+          <Alert severity="error">This is an error Alert.</Alert>
           <TextInput
             label="Username / Email"
             value={presenter?.email?.data}
