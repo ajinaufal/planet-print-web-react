@@ -6,13 +6,13 @@ export class AuthenticationRemoteDatasource {
   }
 
   async login(params) {
-    const resp = await this.api.post('/auth/login', params);
+    const resp = await this.api.post('/v1/auth/login', params);
     if (resp.status == 200) return resp?.data;
     throw new ServerFailure(resp);
   }
 
   async register(params) {
-    const resp = await this.api.post('/auth/register', params);
+    const resp = await this.api.post('/v1/auth/register', params);
     if (resp.status == 200) return resp?.data;
     throw new ServerFailure(resp);
   }

@@ -1,14 +1,15 @@
 export class AuthenticationUsecase {
-  constructor(repository) {
+  constructor({ repository }) {
     this.repository = repository;
   }
 
   async login(params) {
     try {
-      const resp = await this.repository.auth.login(params);
+      console.log(params);
+      const resp = await this.repository?.auth?.login(params);
       return resp;
     } catch (error) {
-      
+      console.log(error);
     }
   }
 

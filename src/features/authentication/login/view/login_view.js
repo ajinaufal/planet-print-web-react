@@ -3,7 +3,8 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { ButtonContained } from '../../../../components/buttons';
 import { Link } from 'react-router-dom';
 import { loginPresenter } from '../presenter/login_presenter';
-import { TextInput } from '../../../../core/components/inputs/input_test';
+import { TextInput } from '../../../../core/components/inputs/input_text';
+import { HideIconAdomment } from '../../../../core/components/adornment/hide_icon_adornment';
 
 function LoginView({ usecase }) {
   const presenter = loginPresenter({ usecase });
@@ -21,10 +22,22 @@ function LoginView({ usecase }) {
         <div className="flex flex-col gap-3 max-w-72 w-full">
           <TextInput
             label="Username / Email"
-            onChange={(e) => presenter.handleInputUsername(e.target.value)}
+            value={presenter?.email?.data}
+            onChange={(e) => presenter.handleChangeInputUsername(e.target.value)}
           />
-          <TextInput label="Password" onChange={(e) => {}} />
-          <ButtonContained>Login</ButtonContained>
+          <TextInput
+            type={presenter?.adornmentPassword?.type}
+            label="Password"
+            value={presenter?.password?.data}
+            onChange={(e) => presenter?.handleChangeInputPassword(e.target.value)}
+            endAdornment={
+              <HideIconAdomment
+                onClick={() => presenter?.hanldeChangeAdornmentPassword()}
+                showPassword={presenter?.adornmentPassword?.data}
+              />
+            }
+          />
+          <ButtonContained onClick={() => presenter?.handleSubmitLogin()}>Login</ButtonContained>
           <p>
             Don't have an account yet?
             <Link className="text-foreground-accent-secondary"> sign up</Link>
