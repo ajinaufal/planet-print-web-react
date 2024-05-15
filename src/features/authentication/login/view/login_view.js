@@ -21,7 +21,10 @@ function LoginView({ usecase }) {
       </div>
       <div className="flex basis-6/12 w-full h-screen items-center justify-center">
         <div className="flex flex-col gap-5 max-w-72 w-full">
-          <Alert severity="error">This is an error Alert.</Alert>
+          {(presenter?.submitLogin?.error || '').length > 0 && (
+            <Alert severity="error">{presenter?.submitLogin?.error}</Alert>
+          )}
+
           <TextInput
             label="Username / Email"
             value={presenter?.email?.data}

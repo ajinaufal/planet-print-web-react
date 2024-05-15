@@ -12,10 +12,18 @@ export class AuthenticationUsecase {
 
   async login(params) {
     try {
-      console.log(params);
       const resp = await this.repository?.auth?.login(params);
 
       if (resp.isLeft()) return resp;
+
+      resp.fold(
+        (error) => {
+          console.log(error.message);
+        },
+        (data) => {
+          console.log(data.token);
+        }
+      );
 
       const { token } = resp.getRight();
       this.repository?.token?.insert(token);

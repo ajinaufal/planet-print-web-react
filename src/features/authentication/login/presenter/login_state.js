@@ -1,5 +1,10 @@
 import { useReducer } from 'react';
-import { adornmentPasswordReducer, emailReducer, passwordReducer } from './login_reducer';
+import {
+  adornmentPasswordReducer,
+  emailReducer,
+  passwordReducer,
+  submitLoginReducer,
+} from './login_reducer';
 
 export function LoginState({ usecase }) {
   const [email, setEmail] = useReducer(emailReducer, { data: undefined, error: '' });
@@ -7,6 +12,10 @@ export function LoginState({ usecase }) {
   const [adornmentPassword, setAdornmentPassword] = useReducer(adornmentPasswordReducer, {
     data: false,
     type: 'text',
+  });
+
+  const [submitLogin, setSubmitLogin] = useReducer(submitLoginReducer, {
+    error: '',
   });
 
   return {
@@ -17,5 +26,7 @@ export function LoginState({ usecase }) {
     setPassword,
     adornmentPassword,
     setAdornmentPassword,
+    submitLogin,
+    setSubmitLogin,
   };
 }

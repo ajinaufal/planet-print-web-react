@@ -32,12 +32,13 @@ function changeAdornmentPassword({ setAdornmentPassword }) {
   setAdornmentPassword({ type: enumReducer.change.data });
 }
 
-async function submitLogin({ usecase, email, password }) {
+async function submitLogin({ usecase, email, password, setSubmitLogin }) {
   const resp = await usecase?.auth?.login({ email: email?.data, password: password?.data });
-  resp.fold(
-    (error) => {},
-    ({ token }) => {
-      console.log('test token :', token);
-    }
-  );
+  if (resp?.isLeft()) {
+    const error = resp?.getLeft();
+    if (error) setSubmitLogin({ type: enumReducer.change.error, error: error.message });
+  } else {
+    setSubmitLogin({ type: enumReducer.change.error, error: '' });
+    window.location.href = '/';
+  }
 }

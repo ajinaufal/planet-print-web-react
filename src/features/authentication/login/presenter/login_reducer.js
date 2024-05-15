@@ -31,4 +31,9 @@ export function adornmentPasswordReducer(state, action) {
   }
 }
 
-export function errorServer(state, action) {}
+export function submitLoginReducer(state, action) {
+  switch (action?.type) {
+    case enumReducer.change.error:
+      return { error: action?.error };
+  }
+}
