@@ -4,8 +4,8 @@ import { ImageConstants } from '../../../../utils/constants/image_constant';
 
 export function SidebarLayout() {
   return (
-    <aside className="flex flex-col gap-3 bg-target-primary-hover h-screen w-fit pt-8">
-      <img src={ImageConstants.beautyProfile} className="w-36 px-4 text-center" />
+    <aside className="flex flex-col gap-3 bg-target-primary-hover h-screen w-fit min-w-52 pt-8">
+      <img src={ImageConstants.beautyProfile} className="w-36 px-4 mx-auto" />
       {(SidebarMenus || []).map((menu, index) => (
         <Link
           id={index}
