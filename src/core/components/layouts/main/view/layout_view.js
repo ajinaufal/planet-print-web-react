@@ -4,13 +4,17 @@ import { HeaderLayout } from '../../header/view/header_layout_view';
 import { SidebarLayout } from '../../sidebare/view/sidebar_layout_view';
 
 function LayoutView() {
-    return (
-        <Fragment>
-            <HeaderLayout />
-            <SidebarLayout />
-            <Outlet />
-        </Fragment>
-    );
+  return (
+    <Fragment>
+      <div className="flex flex-row">
+        <SidebarLayout />
+        <div className="w-full">
+          <HeaderLayout />
+          <Outlet />
+        </div>
+      </div>
+    </Fragment>
+  );
 }
 
 export default memo(LayoutView);

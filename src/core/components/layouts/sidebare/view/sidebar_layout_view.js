@@ -1,24 +1,25 @@
-import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { Link } from 'react-router-dom';
+import { SidebarMenus } from '../../../../utils/constants/menu_sidebar_constants';
+import { ImageConstants } from '../../../../utils/constants/image_constant';
 
 export function SidebarLayout() {
-    return (
-        <aside>
-            <Drawer variant="permanent" anchor="left">
-                <List>
-                    {['Dashboard', 'Order', 'Product', 'Config'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-            </Drawer>
-        </aside>
-    );
+  return (
+    <aside className="flex flex-col gap-3 bg-target-primary-hover h-screen w-fit pt-8">
+      <img src={ImageConstants.beautyProfile} className="w-36 px-4 text-center" />
+      {(SidebarMenus || []).map((menu, index) => (
+        <Link
+          id={index}
+          className="text-white hover:bg-white hover:text-black rounded-l-lg px-4 py-2"
+          // style={{
+          //   WebkitMaskImage:
+          //     'radial-gradient(circle 10px at 0 0, transparent 0, transparent 20px, black 21px)',
+          //   maskImage:
+          //     'radial-gradient(circle 10px at 0 0, transparent 0, transparent 20px, black 21px)',
+          // }}
+        >
+          {menu.name}
+        </Link>
+      ))}
+    </aside>
+  );
 }
