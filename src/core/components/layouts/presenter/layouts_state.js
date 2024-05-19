@@ -1,12 +1,11 @@
 import { useLocation } from 'react-router-dom';
 
-export function layoutState({ usecase }) {
+export function LayoutState({ usecase }) {
     const location = useLocation();
-    
-    const mayAppear = local
 
-  return {
-    usecase,
-    location,
-  };
+    const canShow = true;
+
+    // console.log('test data : ', location.pathname);
+
+    return { usecase, location };
 }
