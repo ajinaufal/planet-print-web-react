@@ -5,10 +5,9 @@ import { CommonInjector } from '../core/injector/injector';
 
 function App() {
   const injector = CommonInjector();
+  const router = Router({ usecase: injector.usecase });
 
-  // injector.local.token.update
-
-  return <RouterProvider router={Router({ usecase: injector.usecase })} />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;

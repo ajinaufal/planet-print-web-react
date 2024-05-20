@@ -5,20 +5,20 @@ import { SidebarLayout } from '../../sidebare/sidebar_layout_view';
 import { LayoutsPresenter } from '../../presenter/layouts_presenter';
 
 function LayoutView({ usecase }) {
-    const presenter = LayoutsPresenter({ usecase });
-    return (
-        <Fragment>
-            <div className="flex flex-row bg-background-secondary">
-                <SidebarLayout />
-                <div className="w-full">
-                    <HeaderLayout />
-                    <div className="p-6">
-                        <Outlet />
-                    </div>
-                </div>
-            </div>
-        </Fragment>
-    );
+  const presenter = LayoutsPresenter({ usecase });
+  return (
+    <Fragment>
+      <div className="flex flex-row bg-background-secondary">
+        <SidebarLayout />
+        <div className="w-full ml-44">
+          <HeaderLayout />
+          <div className="p-6">
+            <Outlet />
+          </div>
+        </div>
+      </div>
+    </Fragment>
+  );
 }
 
 export default memo(LayoutView);
