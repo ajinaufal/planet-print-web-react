@@ -24,10 +24,11 @@ function ListProductView({ usecase }) {
               <tr>
                 <th class="border border-slate-600 ...">Image</th>
                 <th class="border border-slate-600 ...">Name</th>
-                <th class="border border-slate-600 ...">Cateegory</th>
                 <th class="border border-slate-600 ...">SKU</th>
+                <th class="border border-slate-600 ...">Category</th>
                 <th class="border border-slate-600 ...">UOM</th>
                 <th class="border border-slate-600 ...">Price</th>
+                <th class="border border-slate-600 ...">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -38,6 +39,7 @@ function ListProductView({ usecase }) {
                 <td class="border border-slate-700 ...">ABCS</td>
                 <td class="border border-slate-700 ...">MESIN</td>
                 <td class="border border-slate-700 ...">100000</td>
+                <td class="border border-slate-700 ...">Action</td>
               </tr>
             </tbody>
           </table>
