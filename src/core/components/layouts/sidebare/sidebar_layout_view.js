@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { SidebarMenus } from '../../../utils/constants/menu_sidebar_constants';
 import { ImageConstants } from '../../../utils/constants/image_constant';
-import { v4 as uuidv4 } from 'uuid';
-
 export function SidebarLayout() {
   return (
     <aside className="fixed top-0 bottom-0 bg-target-primary-hover h-screen w-fit min-w-44 pt-8">

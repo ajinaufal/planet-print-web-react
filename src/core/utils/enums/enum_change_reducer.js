@@ -4,6 +4,11 @@ const enumReducer = {
     error: 'change-error',
   },
   reset: 'reset',
+  network: {
+    start: 'start',
+    success: 'success',
+    failure: 'failure',
+  },
 };
 
 export default enumReducer;
