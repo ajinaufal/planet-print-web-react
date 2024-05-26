@@ -5,7 +5,5 @@ export function LayoutState({ usecase }) {
 
     const canShow = true;
 
-    // console.log('test data : ', location.pathname);
-
     return { usecase, location };
 }

@@ -4,15 +4,15 @@ import { RoleRemoteDatasources } from '../data/datasource/remote/role_remote_dat
 import { UserRemoteDatasources } from '../data/datasource/remote/user_remote_datasources';
 
 export function DatasourcesRemoteInjector(service) {
-  const auth = new AuthenticationRemoteDatasource({ service });
-  const role = new RoleRemoteDatasources({ service });
-  const user = new UserRemoteDatasources({ service });
+    const auth = new AuthenticationRemoteDatasource({ service });
+    const role = new RoleRemoteDatasources({ service });
+    const user = new UserRemoteDatasources({ service });
 
-  return { auth, role };
+    return { auth, role, user };
 }
 
 export function DatasourcesLocalInjector() {
-  const token = new TokenLocalDatasource();
+    const token = new TokenLocalDatasource();
 
-  return { token };
+    return { token };
 }

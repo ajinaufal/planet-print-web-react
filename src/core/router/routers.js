@@ -8,6 +8,7 @@ import ListProductView from '../../features/product/list_product/view/list_produ
 import CreateProductView from '../../features/product/create_product/view/create_product_view';
 import ListCategoryView from '../../features/category/list_category/view/list_category_view';
 import ListUserView from '../../features/user/list_user/view/list_user_view';
+import CreateUserView from '../../features/user/create_user/view/create_user_view';
 
 export function Router(data) {
     return createBrowserRouter([
@@ -33,5 +34,6 @@ export function routersAuth(data) {
         { path: 'product/create', element: <CreateProductView {...data} /> },
         { path: 'category', element: <ListCategoryView {...data} /> },
         { path: 'user', element: <ListUserView {...data} /> },
+        { path: 'user/create', element: <CreateUserView {...data} /> },
     ];
 }

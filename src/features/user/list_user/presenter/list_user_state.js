@@ -1,12 +1,21 @@
 import { useReducer } from 'react';
-import { userListReducer } from './list_user_reducer';
+import { userDeleteReducer, userListReducer } from './list_user_reducer';
+import { useNavigate } from 'react-router-dom';
 
 export function ListUserState({ usecase }) {
-  const [getUserList, setGetUserList] = useReducer(userListReducer, {
-    data: undefined,
-    error: '',
-    loading: true,
-  });
+    const navigate = useNavigate();
 
-  return { usecase, getUserList, setGetUserList };
+    const [getUserList, setGetUserList] = useReducer(userListReducer, {
+        data: undefined,
+        error: '',
+        loading: true,
+    });
+
+    const [deleteUser, setDeleteUser] = useReducer(userDeleteReducer, {
+        data: undefined,
+        error: '',
+        loading: false,
+    });
+
+    return { usecase, navigate, getUserList, setGetUserList, deleteUser, setDeleteUser };
 }
