@@ -8,6 +8,19 @@ export class UserRepository {
         this.datasource = datasource;
     }
 
+    async create(params) {
+        try {
+            const resp = await this.datasource.user.create(params);
+            return EitherService.right(new UserDeleteResponseEntities(resp?.data));
+        } catch (error) {
+            if (error instanceof ServerFailure) {
+                return EitherService.left(error);
+            } else {
+                return EitherService.left(new RepositoryFailure(error.message));
+            }
+        }
+    }
+
     async list(params) {
         try {
             const resp = await this.datasource.user.list(params);

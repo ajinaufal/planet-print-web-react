@@ -1,3 +1,4 @@
+import { EitherService } from '../../services/either_service';
 import {
     LocalFailure,
     RepositoryFailure,
@@ -8,6 +9,23 @@ import {
 export class UserUsecase {
     constructor({ repository }) {
         this.repository = repository;
+    }
+
+    async createUser(params) {
+        try {
+            const resp = await this.repository?.user?.create(params);
+            return resp;
+        } catch (error) {
+            if (error instanceof ServerFailure) {
+                return error;
+            } else if (error instanceof LocalFailure) {
+                return error;
+            } else if (error instanceof RepositoryFailure) {
+                return error;
+            } else {
+                return EitherService.left(new UsecaseFailure(error.message));
+            }
+        }
     }
 
     async listUser(params) {

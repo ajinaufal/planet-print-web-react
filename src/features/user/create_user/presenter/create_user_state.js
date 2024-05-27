@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import { roleListReducer } from './create_user_reducer';
+import { createUserReducer, roleListReducer } from './create_user_reducer';
 
 export function CreateUserState({ usecase }) {
     const [roleList, setRoleList] = useReducer(roleListReducer, {
@@ -7,5 +7,12 @@ export function CreateUserState({ usecase }) {
         error: '',
         loading: true,
     });
-    return { usecase, roleList, setRoleList };
+
+    const [createUser, setCreateUser] = useReducer(createUserReducer, {
+        data: undefined,
+        error: '',
+        loading: true,
+    });
+
+    return { usecase, roleList, setRoleList, createUser, setCreateUser };
 }

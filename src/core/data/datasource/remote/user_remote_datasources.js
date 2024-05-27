@@ -5,6 +5,13 @@ export class UserRemoteDatasources {
         this.api = service?.api;
     }
 
+    async create(params) {
+        const resp = await this.api.post('/v1/user/create', params);
+        if (resp?.status == 200) return resp?.data;
+        console.error(`Error remote source : ${resp?.data?.error_message}`);
+        throw new ServerFailure(resp);
+    }
+
     async list(params) {
         const resp = await this.api.post('/v1/user/', params);
         if (resp?.status == 200) return resp?.data;

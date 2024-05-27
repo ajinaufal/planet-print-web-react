@@ -13,3 +13,20 @@ async function fetchRoles({ usecase, setRoleList }) {
         (data) => setRoleList({ type: enumReducer.network.success, data: data?.roles })
     );
 }
+
+async function fetchCreateUser({ usecase, setCreateUser }) {
+    setCreateUser({ type: enumReducer.network.start });
+    const resp = await usecase.user.create({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone_number: '',
+        password: '',
+        role: '',
+        status: '',
+    });
+    await resp.fold(
+        (error) => setCreateUser({ type: enumReducer.network.failure, error: error.message }),
+        (data) => setCreateUser({ type: enumReducer.network.success, data: data.user })
+    );
+}

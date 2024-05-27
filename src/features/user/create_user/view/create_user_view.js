@@ -63,7 +63,7 @@ function CreateUserView({ usecase }) {
                 </div>
             </div>
             <div className="flex flex-row gap-3 justify-end">
-                <ButtonContainedSecondary>Discard</ButtonContainedSecondary>
+                <ButtonContainedSecondary>Cancel</ButtonContainedSecondary>
                 <ButtonContainedPrimary>Save</ButtonContainedPrimary>
             </div>
         </div>
