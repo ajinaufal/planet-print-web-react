@@ -52,6 +52,9 @@ export function emailReducer(state, action) {
 export function firstNameReducer(state, action) {
     switch (action?.type) {
         case enumReducer.change.data:
+            if (action?.data || ''.length == 0) {
+                return { data: action?.data, error: 'First name is required' };
+            }
             return { data: action?.data };
         case enumReducer.reset:
             return { data: undefined };
