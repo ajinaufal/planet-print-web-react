@@ -10,6 +10,7 @@ import {
     roleListReducer,
     roleReducer,
     statusReducer,
+    submitReducer,
     usernameReducer,
 } from './create_user_reducer';
 
@@ -26,23 +27,26 @@ export function CreateUserState({ usecase }) {
         loading: true,
     });
 
-    const [firstName, setFirstName] = useReducer(firstNameReducer, { data: '' });
+    const [firstName, setFirstName] = useReducer(firstNameReducer, { data: undefined });
 
-    const [lastName, setLastName] = useReducer(lastNameReducer, { data: '' });
+    const [lastName, setLastName] = useReducer(lastNameReducer, { data: undefined });
 
-    const [username, setUsername] = useReducer(usernameReducer, { data: '' });
+    const [username, setUsername] = useReducer(usernameReducer, { data: undefined });
 
-    const [password, setPassword] = useReducer(passwordReducer, { data: '', error: '' });
+    const [password, setPassword] = useReducer(passwordReducer, { data: undefined, error: '' });
 
     const [confirmPassword, setConfirmPassword] = useReducer(confirmPasswordReducer, { data: '' });
 
-    const [email, setEmail] = useReducer(emailReducer, { data: '', error: '' });
+    const [email, setEmail] = useReducer(emailReducer, { data: undefined, error: '' });
 
-    const [role, setRole] = useReducer(roleReducer, { data: '' });
+    const [role, setRole] = useReducer(roleReducer, { data: undefined });
 
     const [status, setStatus] = useReducer(statusReducer, { data: false });
 
-    const [phoneNumber, setPhoneNumber] = useReducer(phoneNumberReducer, { data: '', error: '' });
+    const [phoneNumber, setPhoneNumber] = useReducer(phoneNumberReducer, {
+        data: undefined,
+        error: '',
+    });
 
     return {
         usecase,

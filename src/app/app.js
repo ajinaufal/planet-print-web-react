@@ -1,5 +1,5 @@
-import { RouterProvider } from 'react-router-dom';
 import './app.css';
+import { RouterProvider } from 'react-router-dom';
 import { Router } from '../core/router/routers';
 import { CommonInjector } from '../core/injector/injector';
 

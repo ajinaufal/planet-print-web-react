@@ -5,11 +5,15 @@ import { ButtonContainedPrimary } from '../../../../core/components/buttons/cont
 import { ButtonContainedSecondary } from '../../../../core/components/buttons/contained/button_secondary';
 import { CreateUserPresenter } from '../presenter/create_user_presenter';
 import enumReducer from '../../../../core/utils/enums/enum_change_reducer';
+import { Alert } from '@mui/material';
 
 function CreateUserView({ usecase }) {
     const presenter = CreateUserPresenter({ usecase });
     return (
         <div className="flex flex-col gap-3">
+            {(presenter?.createUser?.error || '').length > 0 && (
+                <Alert severity="error">{presenter?.createUser?.error || ''}</Alert>
+            )}
             <div className="flex flex-row gap-3">
                 <div className="flex flex-col basis-8/12 gap-2 bg-white p-3 rounded-md shadow h-fit">
                     <div className="flex flex-row gap-2">
@@ -41,6 +45,21 @@ function CreateUserView({ usecase }) {
                                 }
                             />
                         </div>
+                    </div>
+                    <div className="flex flex-col w-full gap-2">
+                        <label form="email">Username</label>
+                        <TextInput
+                            textError={presenter?.username?.error}
+                            id="username"
+                            fullWidth
+                            value={presenter?.username?.data}
+                            onChange={(e) =>
+                                presenter?.setUsername({
+                                    type: enumReducer.change.data,
+                                    data: e.target.value,
+                                })
+                            }
+                        />
                     </div>
                     <div className="flex flex-col w-full gap-2">
                         <label form="email">Email</label>
@@ -131,13 +150,12 @@ function CreateUserView({ usecase }) {
                                     { value: 'false', label: 'Inactive' },
                                 ]}
                                 value={presenter?.status?.data}
-                                handleChange={(e) => {
-                                    console.log(e.target.value);
-                                    presenter?.setRole({
+                                handleChange={(e) =>
+                                    presenter?.setStatus({
                                         type: enumReducer.change.data,
                                         data: e.target.value,
-                                    });
-                                }}
+                                    })
+                                }
                             />
                         </div>
                     </div>
@@ -145,7 +163,9 @@ function CreateUserView({ usecase }) {
             </div>
             <div className="flex flex-row gap-3 justify-end">
                 <ButtonContainedSecondary>Cancel</ButtonContainedSecondary>
-                <ButtonContainedPrimary>Save</ButtonContainedPrimary>
+                <ButtonContainedPrimary onClick={() => presenter?.handleFetchCreateUser()}>
+                    Save
+                </ButtonContainedPrimary>
             </div>
         </div>
     );
